@@ -2,10 +2,11 @@ package collectionclasses;
 
 import java.util.Objects;
 
-public class Employee {
+public class Student {
 	private int id;
 	private String name;
-	double salary;
+	private int age;
+	private int marks;
 
 	public int getId() {
 		return id;
@@ -23,33 +24,42 @@ public class Employee {
 		this.name = name;
 	}
 
-	public double getSalary() {
-		return salary;
+	public int getAge() {
+		return age;
 	}
 
-	public void setSalary(double salary) {
-		this.salary = salary;
+	public void setAge(int age) {
+		this.age = age;
 	}
 
-	public Employee(int id, String name, double salary) {
+	public int getMarks() {
+		return marks;
+	}
+
+	public void setMarks(int marks) {
+		this.marks = marks;
+	}
+
+	public Student(int id, String name, int age, int marks) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.salary = salary;
+		this.age = age;
+		this.marks = marks;
 	}
 
-	public Employee() {
+	public Student() {
 		super();
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", marks=" + marks + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, salary);
+		return this.id;
 	}
 
 	@Override
@@ -60,8 +70,7 @@ public class Employee {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Employee other = (Employee) obj;
-		return id == other.id && Objects.equals(name, other.name)
-				&& Double.doubleToLongBits(salary) == Double.doubleToLongBits(other.salary);
+		Student other = (Student) obj;
+		return age == other.age && id == other.id && marks == other.marks && Objects.equals(name, other.name);
 	}
 }

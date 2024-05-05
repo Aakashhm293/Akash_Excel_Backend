@@ -1,11 +1,12 @@
-package collectionclasses;
+package hashcode;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-
 import java.util.Scanner;
 
-public class AddEmployeeData {
+import collectionclasses.Employee;
+
+public class EmployeeDriver {
 	public static void main(String[] args) {
 
 		LinkedList<Employee> empsList = new LinkedList<Employee>();
