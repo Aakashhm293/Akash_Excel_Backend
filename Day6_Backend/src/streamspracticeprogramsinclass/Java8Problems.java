@@ -1,4 +1,4 @@
-package streamsprograms;
+package streamspracticeprogramsinclass;
 
 import java.util.Arrays;
 import java.util.Collections;
