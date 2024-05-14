@@ -40,18 +40,15 @@ public class Employee implements Comparable<Employee> {
 		super();
 	}
 
-	@Override
 	public int compareTo(Employee o) {
-		if(this.getId() > o.getId())
+		if (this.getId() > o.getId())
 			return 1;
 		else
 			return -1;
 	}
 
-	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
 	}
 
-	
 }

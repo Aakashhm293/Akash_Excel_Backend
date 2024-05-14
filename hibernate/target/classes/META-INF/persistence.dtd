@@ -1,0 +1,9 @@
+<!ELEMENT persistence (persistence-unit)>
+<!ATTLIST persistence version NMTOKEN #REQUIRED>
+<!ELEMENT persistence-unit (provider,properties)>
+<!ATTLIST persistence-unit name NMTOKEN #REQUIRED>
+<!ELEMENT provider (#PCDATA)>
+<!ELEMENT properties (property+)>
+<!ELEMENT property EMPTY>
+<!ATTLIST property name NMTOKEN #REQUIRED>
+<!ATTLIST property value CDATA #REQUIRED>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="https://www.springframework.org/schema/context"
+	xmlns:p="https://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+	<util:list list-class="java.util.ArrayList" id="phones">
+		<value>3213232132331</value>
+		<value>1215153215</value>
+		<value>3213232</value>
+	</util:list>
+
+	<util:map map-class="java.util.HashMap" id="nominees">
+		<entry key="mother" value="100"></entry>
+	</util:map>
+
+	<bean name="address" class="com.excel.springproject.collection.Address">
+		<property name="name" value="Mysore"></property>
+		<property name="postalcode" value="570016"></property>
+	</bean>
+
+	<bean id="employee" class="com.excel.springproject.collection.Employee">
+		<property name="name" value="Akash"></property>
+		<property name="phones" ref="phones"></property>
+		<property name="skills">
+			<set>
+				<value>Java</value>
+				<value>Spring-Boot</value>
+				<value>Hibernate</value>
+			</set>
+		</property>
+		<property name="nominees" ref="nominees">
+
+		</property>
+		<property name="address" ref="address"></property>
+	</bean>
+
+</beans>
