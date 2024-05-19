@@ -1,17 +1,10 @@
-package com.excel.lms.entity;
+package com.excel.lms.dto;
 
 import java.time.LocalDate;
 
+import com.excel.lms.entity.EmployeePrimaryInfo;
 import com.excel.lms.enums.EducationType;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,16 +15,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table
 @Builder
-public class EmployeeEducationInfo {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EmployeeEducationInfoDto {
 	private Integer educationId;
-	
-	@Enumerated(EnumType.STRING)
 	private EducationType educationType;
 	private LocalDate yearOfPassing;
 	private Double percentage;
@@ -39,7 +25,5 @@ public class EmployeeEducationInfo {
 	private String instituteName;
 	private String specialization;
 	private String state;
-	
-	@ManyToOne
 	private EmployeePrimaryInfo employeePrimaryInfo;
 }
