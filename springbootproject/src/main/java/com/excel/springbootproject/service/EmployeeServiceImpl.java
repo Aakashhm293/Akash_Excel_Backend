@@ -58,6 +58,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 				.employeeNo(dto.getEmployeeNo()).build();
 
 		employeeRepository.save(employee);
+		return dto;
 
 	}
 
