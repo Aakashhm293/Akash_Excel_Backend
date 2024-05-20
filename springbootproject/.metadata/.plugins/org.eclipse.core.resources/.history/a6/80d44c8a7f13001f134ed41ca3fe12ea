@@ -1,0 +1,9 @@
+package com.excel.lms.enums;
+
+import lombok.Getter;
+
+@
+@Getter
+public enum ContactType {
+	
+}

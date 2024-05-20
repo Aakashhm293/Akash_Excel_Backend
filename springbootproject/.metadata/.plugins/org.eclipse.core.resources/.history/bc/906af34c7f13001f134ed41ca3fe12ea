@@ -1,0 +1,13 @@
+package com.excel.lms.enums;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Getter
+public enum AddressType {
+
+	PERMANEBT("PERMANENT"), SAVINGS("SAVINGS");
+
+	private final String addressType;
+}

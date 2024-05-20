@@ -1,0 +1,29 @@
+package com.excel.lms.entity;
+
+import java.time.LocalDate;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "employee_primary_info")
+public class EmployeePrimaryInfo {
+	private String employeeId;
+	private String employeeName;
+	private LocalDate dateOfJoining;
+	private LocalDate dateOfBirth;
+	private String email;
+	private String bloodgroup;
+	private String designation;
+	private String gender;
+	private String nationality;
+	private String gender;
+}

@@ -8,61 +8,104 @@ import org.springframework.stereotype.Service;
 
 import com.excel.springbootproject.constant.EmployeeConstant;
 import com.excel.springbootproject.dto.EmployeeDto;
+import com.excel.springbootproject.entity.Address;
 import com.excel.springbootproject.entity.Employee;
 import com.excel.springbootproject.exception.EmployeeNotFound;
 import com.excel.springbootproject.repository.EmployeeRepository;
+import com.excel.springbootproject.util.EntityToDto;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
 	@Autowired
-	private EmployeeRepository repository;
+	private EmployeeRepository employeeRepository;
 
 	@Override
 	public EmployeeDto addEmployee(EmployeeDto dto) {
+
+//		Employee employee = Employee.builder()
+//				.firstName(dto.getFirstName())
+//				.lastName(dto.getLastName())
+//				.mobileNo(dto.getMobileNo())
+//				.aadharNo(dto.getAadharNo())
+//				.panNo(dto.getPanNo())
+//				.address(dto.getAddress())
+//				.employeeNo(dto.getEmployeeNo())
+//				.build();
+//
+//		Employee save = repository.save(employee);
+//
+//		return EmployeeDto.builder()
+//				.empid(save.getEmpid())
+//				.firstName(save.getFirstName())
+//				.lastName(save.getLastName())
+//				.mobileNo(save.getMobileNo())
+//				.aadharNo(save.getAadharNo())
+//				.panNo(save.getPanNo())
+//				.address(save.getAddress())
+//				.employeeNo(save.getEmployeeNo())
+//				.build();
 		Employee employee = Employee.builder().firstName(dto.getFirstName()).lastName(dto.getLastName())
 				.mobileNo(dto.getMobileNo()).aadharNo(dto.getAadharNo()).panNo(dto.getPanNo())
+				.address(dto.getAddress().stream()
+								.map(add -> Address.builder()
+										.street(add.getStreet())
+										.place(add.getPlace())
+										.pincode(add.getPincode())
+										.build())
+								.toList())
+				
 				.employeeNo(dto.getEmployeeNo()).build();
 
-		Employee save = repository.save(employee);
+		employeeRepository.save(employee);
 
-		return EmployeeDto.builder().empid(save.getEmpid()).firstName(save.getFirstName()).lastName(save.getLastName())
-				.mobileNo(save.getMobileNo()).aadharNo(save.getAadharNo()).panNo(save.getPanNo())
-				.employeeNo(save.getEmployeeNo()).build();
 	}
 
 	@Override
 	public void deleteEmployee(EmployeeDto dto) {
-		Optional<Employee> optional = repository.findById(dto.getEmpid());
+		Optional<Employee> optional = employeeRepository.findById(dto.getEmpid());
 		if (optional.isPresent())
-			repository.delete(optional.get());
+			employeeRepository.delete(optional.get());
 		else
 			throw new EmployeeNotFound(EmployeeConstant.EMPLOYEE_NOT_FOUND);
 	}
 
 	@Override
 	public List<EmployeeDto> getAllEmployees() {
-		return repository.findAll().stream()
+		return employeeRepository.findAll().stream()
 				.map(e -> EmployeeDto.builder().empid(e.getEmpid()).firstName(e.getFirstName())
 						.lastName(e.getLastName()).mobileNo(e.getMobileNo()).aadharNo(e.getAadharNo())
 						.panNo(e.getPanNo()).employeeNo(e.getEmployeeNo()).build())
 				.toList();
 	}
 
-	public List<EmployeeDto> getEmployeeById(EmployeeDto dto) {
+	public EmployeeDto getEmployeeById(EmployeeDto dto) {
 
-		Optional<Employee> optional = repository.findById(dto.getEmpid());
+		Optional<Employee> optional = employeeRepository.findById(dto.getEmpid());
 
 		if (optional.isPresent()) {
-			return repository.findAll().stream()
-					.map(e -> EmployeeDto.builder().empid(optional.get().getEmpid())
-							.firstName(optional.get().getFirstName()).lastName(optional.get().getLastName())
-							.mobileNo(optional.get().getMobileNo()).aadharNo(optional.get().getAadharNo())
-							.panNo(optional.get().getPanNo()).employeeNo(optional.get().getEmployeeNo()).build())
-					.toList();
+			Employee employee = optional.get();
+			return EntityToDto.entityToDto(employee, dto);
 		} else {
-			return null;
+			throw new EmployeeNotFound(EmployeeConstant.EMPLOYEE_NOT_FOUND);
 		}
+	}
 
+	public EmployeeDto updateEmployeeById(EmployeeDto dto) {
+		Optional<Employee> optional = employeeRepository.findById(dto.getEmpid());
+
+		if (optional.isPresent()) {
+			Employee employee = optional.get();
+
+			employee.setFirstName(dto.getFirstName());
+			employee.setLastName(dto.getLastName());
+			employee.setMobileNo(dto.getMobileNo());
+
+			Employee save = employeeRepository.save(employee);
+
+			return EntityToDto.entityToDto(save, dto);
+		} else {
+			throw new EmployeeNotFound(EmployeeConstant.EMPLOYEE_NOT_FOUND);
+		}
 	}
 }

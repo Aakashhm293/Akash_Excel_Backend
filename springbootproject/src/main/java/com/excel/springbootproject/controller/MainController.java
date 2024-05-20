@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.excel.springbootproject.constant.EmployeeConstant;
 import com.excel.springbootproject.dto.EmployeeDto;
+import com.excel.springbootproject.response.EmployeeResponse;
 import com.excel.springbootproject.service.EmployeeService;
 
 @RestController
@@ -22,15 +24,17 @@ public class MainController {
 	private EmployeeService employeeService;
 
 	@PostMapping("/add")
-	public ResponseEntity<EmployeeDto> addEmployee(@RequestBody EmployeeDto employee) {
+	public ResponseEntity<EmployeeResponse<EmployeeDto>> addEmployee(@RequestBody EmployeeDto employee) {
 		EmployeeDto dto = employeeService.addEmployee(employee);
-		return ResponseEntity.status(HttpStatus.OK).body(dto);
+		return ResponseEntity.status(HttpStatus.OK).body(EmployeeResponse.<EmployeeDto>builder().data(dto)
+				.isError(false).message(EmployeeConstant.EMPLOYEE_ADDED_SUCCESSFULY).build());
 	}
 
 	@PutMapping("/update")
-	public ResponseEntity<EmployeeDto> updateEmployee(@RequestBody EmployeeDto employee) {
-		EmployeeDto dto = employeeService.addEmployee(employee);
-		return ResponseEntity.status(HttpStatus.OK).body(dto);
+	public ResponseEntity<EmployeeResponse<EmployeeDto>> updateEmployee(@RequestBody EmployeeDto employee) {
+		EmployeeDto dto = employeeService.updateEmployeeById(employee);
+		return ResponseEntity.status(HttpStatus.OK).body(EmployeeResponse.<EmployeeDto>builder().data(dto)
+				.isError(false).message("Employee Updated Successfully").build());
 	}
 
 	@DeleteMapping("/delete")
@@ -38,9 +42,14 @@ public class MainController {
 		employeeService.deleteEmployee(dto);
 		return ResponseEntity.ok("Employee Deleted Successfully");
 	}
-	
+
 	@GetMapping("/getall")
-	public ResponseEntity<List<EmployeeDto>> fetchAllEmployee(){
+	public ResponseEntity<List<EmployeeDto>> fetchAllEmployee() {
 		return ResponseEntity.ok(employeeService.getAllEmployees());
+	}
+
+	@GetMapping("/getbyid")
+	public ResponseEntity<EmployeeDto> fetchEmployeeById(@RequestBody EmployeeDto dto) {
+		return ResponseEntity.ok(employeeService.getEmployeeById(dto));
 	}
 }

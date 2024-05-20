@@ -1,0 +1,8 @@
+package com.excel.lms.enums;
+
+public enum Designation {
+	
+	TRAINEE("TRAINEE"), MENTOR("MENTOR"),DEVELOPER("DEVELOPER"),TESTER("TESTER"),OTHERS("OTHERS")
+	
+	private final String designationType;
+}

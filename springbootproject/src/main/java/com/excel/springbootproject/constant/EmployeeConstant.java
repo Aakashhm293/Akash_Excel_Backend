@@ -7,5 +7,6 @@ public class EmployeeConstant {
 	}
 	
 	public final static String EMPLOYEE_NOT_FOUND = "Employee Not Found";
+	public final static String EMPLOYEE_ADDED_SUCCESSFULY = "Employee Added Found";
 	
 }

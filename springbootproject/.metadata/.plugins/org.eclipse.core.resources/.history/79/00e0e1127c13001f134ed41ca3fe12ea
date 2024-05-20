@@ -1,0 +1,10 @@
+package com.excel.lms.enums;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+public enum Gender {
+	MALE("MALE"), FEMALE("FEMALE"), OTHERS("OTHERS");
+	
+	private final String genderType;
+}

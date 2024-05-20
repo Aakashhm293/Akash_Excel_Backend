@@ -1,0 +1,5 @@
+package com.excel.lms.entity;
+
+public class EmployeeBankDetails {
+
+}

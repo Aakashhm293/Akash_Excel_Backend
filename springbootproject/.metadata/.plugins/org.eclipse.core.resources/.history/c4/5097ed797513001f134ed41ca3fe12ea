@@ -1,0 +1,28 @@
+package com.excel.lms.entity;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table
+public class EmployeeEducationInfo {
+
+	private String educationType;
+	private LocalDate yearOfPassing;
+	private Double percentage;
+	private String universityName;
+	private String instituteName;
+	private String specialization;
+	private List<String> state;
+}

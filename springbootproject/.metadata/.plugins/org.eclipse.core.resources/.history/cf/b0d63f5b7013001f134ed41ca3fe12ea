@@ -1,0 +1,25 @@
+package com.excel.lms.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "employee_primary_info")
+public class EmployeePrimaryInfo {
+	private String employeeId;
+	private String employeeName;
+	private String
+	private String
+	private String
+	private String
+	private String
+	private String
+}

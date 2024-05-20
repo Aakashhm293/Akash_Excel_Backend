@@ -1,0 +1,27 @@
+package com.excel.lms.entity;
+
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "employee_address_info")
+public class EmployeeAddressInfo {
+	private List<String> addressType;
+	private Integer doorNo;
+	private String street;
+	private String locality;
+	private List<String> city;
+	private List<String> state;
+	private Integer pinCode;
+	private String landMark;
+}

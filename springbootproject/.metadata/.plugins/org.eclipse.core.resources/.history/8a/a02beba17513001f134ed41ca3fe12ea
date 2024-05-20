@@ -1,0 +1,22 @@
+package com.excel.lms.entity;
+
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "employee_contact_info")
+public class EmployeeContactInfo {
+	private Integer contactId;
+	private List<String> contactType;
+	private List<Double> contactNumber;
+}
