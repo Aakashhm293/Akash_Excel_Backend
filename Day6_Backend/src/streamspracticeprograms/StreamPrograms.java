@@ -1,22 +1,5 @@
 package streamspracticeprograms;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.IntSummaryStatistics;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
-import com.sun.tools.javac.code.Attribute.Array;
-
 public class StreamPrograms {
 	public static void main(String[] args) {
 
@@ -266,10 +249,9 @@ public class StreamPrograms {
 //			String newString = listOfStrings.stream().collect(Collectors.joining(" <-> "," Prefix "," Suffix "));
 //			System.out.println(newString);
 //		}
-		
+
 //		------------------------------------------------------------------------------------------------------
 
-		
 // 		17 Maximum & Minimum in A List
 
 //		{
@@ -287,8 +269,7 @@ public class StreamPrograms {
 //			System.out.println(list);
 //			System.out.println(list1);
 //		}
-		
-		
+
 //		------------------------------------------------------------------------------------------------------
 
 // 		18 Anagram Program In Java8
@@ -306,7 +287,7 @@ public class StreamPrograms {
 //				System.out.println("Is Anagram");
 //			}
 //		}
-		
+
 //		------------------------------------------------------------------------------------------------------
 
 //		19 Sum of all digits of a number
@@ -322,7 +303,6 @@ public class StreamPrograms {
 
 //		------------------------------------------------------------------------------------------------------
 
-		
 //		20 Second largest number in an Integer Array
 //		
 //		{
@@ -337,9 +317,9 @@ public class StreamPrograms {
 //			
 //			System.out.println(list);
 //		}
-		
+
 //		------------------------------------------------------------------------------------------------------
-		
+
 //		21 Common Elements Between Two Arrays
 
 //		{
@@ -356,10 +336,9 @@ public class StreamPrograms {
 //			
 //			list1.stream().filter(list2::contains).forEach(System.out::println);;
 //		}
-		
+
 //		------------------------------------------------------------------------------------------------------
 
-		
 //		22 Reverse Each Word of A String
 
 //		{
@@ -371,19 +350,18 @@ public class StreamPrograms {
 //			
 //			System.out.println(str1);
 //		}
-		
+
 //		------------------------------------------------------------------------------------------------------
-		
+
 // 		23 Sum of First 10 Natural Numbers
 
 //		{
 //			Integer ints = IntStream.range(1, 11).sum();
 //			System.out.println(ints);
 //		}
-		
+
 //		------------------------------------------------------------------------------------------------------
 
-		
 //		24 Find Strings which start with number
 
 //		{
@@ -429,7 +407,6 @@ public class StreamPrograms {
 //		Stream.iterate(new int[] { 0, 1 }, f -> new int[] { f[1], f[0] + f[1] }).limit(10).map(f -> f[0])
 //				.forEach(System.out::println);
 //		}
-
 
 	}
 }
